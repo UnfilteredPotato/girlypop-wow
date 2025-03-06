@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Girlypop WoW Adventures ✨</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Comic Sans MS', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff5f8;
+            color: #6a4162;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #ff9ce3 0%, #ffbae9 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px dashed #ff6ec7;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        h1 {
+            font-size: 42px;
+            margin: 0;
+            text-shadow: 3px 3px 0px #ffc9e5;
+            color: #6a1b9a;
+        }
+        
+        .sparkle {
+            color: #ff66c4;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #ffd6ef;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(255, 132, 195, 0.3);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #ac3b81;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            background-color: #ffadd6;
+            color: #6a1b9a;
+            transform: scale(1.05);
+        }
+        
+        nav a:hover::after {
+            content: "♥";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ff66c4;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            background-color: #ffecf7;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(255, 132, 195, 0.2);
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, #ff9ce3, #d4a5ff, #ff9ce3);
+            background-size: 200% 100%;
+            animation: rainbow 3s linear infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        .hero h2 {
+            margin-top: 0;
+            color: #ba42a5;
+            font-size: 32px;
+        }
+        
+        .hero p {
+            max-width: 700px;
+            margin: 20px auto;
+            font-size: 18px;
+        }
+        
+        .hero-img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 20px;
+            margin: 20px auto;
+            display: block;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(255, 132, 195, 0.3);
+        }
+        
+        /* Class Cards */
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .class-card {
+            background-color: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(255, 132, 195, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .class-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 132, 195, 0.3);
+        }
+        
+        .class-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff9ce3, #d4a5ff, #ff9ce3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .class-card:hover::after {
+            opacity: 1;
+        }
+        
+        .class-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 3px solid #ffd6ef;
+        }
+        
+        .class-content {
+            padding: 20px;
+        }
+        
+        .class-title {
+            margin: 0 0 10px 0;
+            color: #ba42a5;
+            font-size: 24px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .class-title::after {
+            content: "✨";
+            margin-left: 8px;
+            font-size: 16px;
+        }
+        
+        .class-desc {
+            color: #7a5677;
+            margin-bottom: 20px;
+        }
+        
+        .class-special {
+            background-color: #ffeef9;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            color: #ac3b81;
+            margin-bottom: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff9ce3;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 132, 195, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: #ff66c4;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 132, 195, 0.4);
+        }
+        
+        /* Features Section */
+        .features {
+            margin-top: 60px;
+            background-color: #ffecf7;
+            padding: 40px;
+            border-radius: 30px;
+            position: relative;
+        }
+        
+        .features-deco {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.2;
+        }
+        
+        .deco-1 {
+            top: 10px;
+            left: 20px;
+        }
+        
+        .deco-2 {
+            bottom: 10px;
+            right: 20px;
+        }
+        
+        .features h2 {
+            text-align: center;
+            color: #ba42a5;
+            font-size: 32px;
+            margin-top: 0;
+        }
+        
+        .features-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .features-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .features-list li::before {
+            content: "🌸";
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        
+        /* Gallery */
+        .gallery {
+            margin-top: 60px;
+        }
+        
+        .gallery h2 {
+            text-align: center;
+            color: #ba42a5;
+            font-size: 32px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 132, 195, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            margin-top: 60px;
+            background: linear-gradient(135deg, #ffd6ef 0%, #ffc9f6 100%);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            color: #6a1b9a;
+            font-size: 28px;
+            margin-top: 0;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 600px;
+            margin: 20px auto 0;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 16px;
+            outline: none;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .newsletter-btn {
+            background-color: #ff66c4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 0 50px 50px 0;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-btn:hover {
+            background-color: #ba42a5;
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            background-color: #ffd6ef;
+            color: #ac3b81;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 4px dashed #ff9ce3;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: #ac3b81;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #6a1b9a;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 24px;
+            color: #ba42a5;
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            transform: scale(1.2);
+            color: #6a1b9a;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            
+            .hero h2 {
+                font-size: 28px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input, .newsletter-btn {
+                width: 100%;
+                border-radius: 50px;
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* Cute Decoration Elements */
+        .heart-cursor {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>💕</text></svg>") 16 0, auto;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="heart-cursor">
+    <header>
+        <div class="header-container">
+            <h1><span class="sparkle">✨</span> World of Warcraft <span class="sparkle">✨</span><br>Girlypop Edition</h1>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#" class="floating">Home</a></li>
+            <li><a href="#" class="floating">Cute Classes</a></li>
+            <li><a href="#" class="floating">Pretty Mounts</a></li>
+            <li><a href="#" class="floating">Aesthetic Transmog</a></li>
+            <li><a href="#" class="floating">Kawaii Screenshots</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section class="hero">
+            <h2>Welcome to Azeroth, Bestie! 💖</h2>
+            <p>Join our pastel adventure through Azeroth where we slay dragons (respectfully), collect the cutest pets, and make the Lich King look totally fab with our style!</p>
+            <p>This isn't your ordinary WoW - it's World of Warcraft: Girlypop Edition where everything is prettier, sparklier, and absolutely magical! ✨</p>
+            <img src="images/wow-hero.jpg" alt="Cute WoW with Sprinkles" class="hero-img">
+            <a href="#" class="btn">Start Your Cute Adventure!</a>
+        </section>
+        
+        <section>
+            <h2 style="text-align: center; color: #ba42a5;">Adorable Classes 💕</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">Choose your perfect class and make it fabulous with our girlypop transformation guide!</p>
+            
+            <div class="class-grid">
+                <div class="class-card">
+                    <img src="images/warrior-princess.jpg" alt="Warrior Princess" class="class-img">
+                    <div class="class-content">
+                        <h3 class="class-title">Warrior Princess</h3>
+                        <p class="class-desc">Who says warriors can't be pretty? Charge into battle with flower-shaped shields and glittery armor!</p>
+                        <div class="class-special">💪 Special: Rose-gold plate armor sets</div>
+                        <a href="#" class="btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <img src="images/pastel-mage.jpg" alt="Pastel Mage" class="class-img">
+                    <div class="class-content">
+                        <h3 class="class-title">Pastel Mage</h3>
+                        <p class="class-desc">Cast spells in every color of the rainbow! Your fireballs now look like heart-shaped candy!</p>
+                        <div class="class-special">✨ Special: Unicorn-themed staff collection</div>
+                        <a href="#" class="btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <img src="images/flower-druid.jpg" alt="Flower Druid" class="class-img">
+                    <div class="class-content">
+                        <h3 class="class-title">Flower Druid</h3>
+                        <p class="class-desc">Transform into kawaii animal forms with flower crowns and sparkly paws!</p>
+                        <div class="class-special">🌸 Special: Sakura petal shapeshifting effects</div>
+                        <a href="#" class="btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <img src="images/bff-hunter.jpg" alt="BFF Hunter" class="class-img">
+                    <div class="class-content">
+                        <h3 class="class-title">BFF Hunter</h3>
+                        <p class="class-desc">Collect the cutest pets in Azeroth and dress them in matching outfits!</p>
+                        <div class="class-special">🐱 Special: Exclusive pet tea party animations</div>
+                        <a href="#" class="btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <img src="images/glitter-paladin.jpg" alt="Glitter Paladin" class="class-img">
+                    <div class="class-content">
+                        <h3 class="class-title">Glitter Paladin</h3>
+                        <p class="class-desc">Spread the Light with extra sparkles! Your healing spells leave behind heart effects!</p>
+                        <div class="class-special">✨ Special: Shimmering bubble hearth effect</div>
+                        <a href="#" class="btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <img src="images/kawaii-rogue.jpg" alt="Kawaii Rogue" class="class-img">
+                    <div class="class-content">
+                        <h3 class="class-title">Kawaii Rogue</h3>
+                        <p class="class-desc">Stealth with style! Your daggers are now decorated with cute charms and ribbons!</p>
+                        <div class="class-special">🔪 Special: Confetti stealth reveal effect</div>
+                        <a href="#" class="btn">Play Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="features">
+            <div class="features-deco deco-1">🌸</div>
+            <div class="features-deco deco-2">💖</div>
+            <h2>Adorbs Features ✨</h2>
+            <ul class="features-list">
+                <li><strong>Aesthetic Transmog Collections:</strong> Customize your gear with pastel colors, heart motifs, and kawaii accessories!</li>
+                <li><strong>Cute Combat Pet System:</strong> Your battle pets now have fashion accessories and can participate in cute tea parties!</li>
+                <li><strong>Girlypop Guild Halls:</strong> Decorate your guild space with plushies, fairy lights, and pastel furniture!</li>
+                <li><strong>Friendship Bracelets:</strong> Craft special items to share with your BFFs for extra bonuses when playing together!</li>
+                <li><strong>Aesthetic Screenshots:</strong> Special photo mode with cute filters, stickers, and frames to capture your adventures!</li>
+                <li><strong>Rainbow Mounts:</strong> All mounts now leave behind a trail of sparkles, hearts, or flowers!</li>
+                <li><strong>Makeover Missions:</strong> Special quests to help NPCs find their perfect style and confidence!</li>
+                <li><strong>Daily Affirmations:</strong> Get cute motivational messages each time you log in!</li>
+            </ul>
+        </section>
+        
+
+        <section class="newsletter">
+            <h2>Join Our Girlypop Newsletter! 💌</h2>
+            <p>Stay updated with the cutest WoW tips, aesthetics, and friendship events!</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" class="newsletter-input" required>
+                <button type="submit" class="newsletter-btn">Subscribe ✨</button>
+            </form>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Cute Community</a>
+                <a href="#">Fashion Guides</a>
+                <a href="#">Contact</a>
+                <a href="#">Support</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#">💌</a>
+                <a href="#">💕</a>
+                <a href="#">✨</a>
+                <a href="#">🌸</a>
+            </div>
+            
+            <p class="copyright">© 2025 Girlypop WoW Adventures. This is a fan site and is not affiliated with Blizzard Entertainment.</p>
+        </div>
+    </footer>
+</body>
+</html>
